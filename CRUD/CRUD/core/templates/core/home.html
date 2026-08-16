@@ -1,0 +1,48 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block main_content %}
+<section class="container">
+     <div class="row justify-content-around text-center text-white mt-1"> 
+          <div class="col-sm-8"></div>
+          <h3>CRUD Operation in Python Django</h3>
+
+          <div class="row justify-content-around mt-3"></div>
+          <div class="col-sm-8">
+               <!-- Table show karne ka code -->
+               <table class="table table-bordered text-white">
+                    <thead>
+                         <tr>
+                              <th>Name</th>
+                              <th>Roll</th>
+                              <th>City</th>
+                              <th>Action</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                         {% for stud in studata %}
+                              <tr>
+                                   <td>{{ stud.name }}</td>
+                                   <td>{{ stud.roll }}</td>
+                                   <td>{{ stud.city }}</td>
+                                   <td>
+                         <a href="{% url 'edit_student' stud.id %}" class="btn btn-warning btn-sm">Edit</a>
+
+                                        <form action="{% url 'delete_student' %}" method="POST">
+                                             {% csrf_token %}
+                                             <input type="hidden" name="id" value="{{ stud.id }}">
+                                             <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                        </form>
+                                   </td>
+                              </tr>
+                         {% endfor %}
+                    </tbody>
+               </table>
+
+               <!-- Add button -->
+               <a href="{% url 'add_student' %}" class="btn btn-primary float-end">Add</a>
+          </div>
+     </div>
+</section>
+{% endblock main_content %}
