@@ -23,5 +23,5 @@ Read / View all students
 Update existing student data
 Delete student entries
 GitHub Repository:
-[https://github.com/Rabi-cyber494/student-crud-app/new/main?filename=README.md
+[https://github.com/Rabi-cyber494/student-crud-app
 ]
